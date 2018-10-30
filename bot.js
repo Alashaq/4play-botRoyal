@@ -41,8 +41,6 @@ ${prefix}server ⇏ لمعرفة معلومات السيرفر
 
 ${prefix}roles ⇏ لعرض كل رتب السيرفر
 
-${prefix}inv ⇏ لدعوة البوت لسيرفرك
-
 ${prefix}cc ⇏ لصنع الوان
  
 ${prefix}لو خيروك ⇏ game لو خيروك 
