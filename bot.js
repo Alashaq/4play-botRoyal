@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const prefix = "-";
 
 client.on('ready', () => {
-     client.user.setActivity(" -help | -inv",{type: 'WATCHING'})
+     client.user.setActivity(" -help",{type: 'WATCHING'})
 
 });
 
@@ -15,7 +15,7 @@ client.on("message", message => {
       .setColor("#000000") 
       .setDescription(`
       
-                    System Bot Minore Commands
+                    System Bot EpicTown Commands
 Please Choose:
 
              
