@@ -15,7 +15,7 @@ client.on("message", message => {
       .setColor("#000000") 
       .setDescription(`
       
-                    System Bot EpicTown Commands
+                   OverHype Security Commands
 Please Choose:
 
              
@@ -170,7 +170,7 @@ client.on('message' , async (message) => {
         .addField(':bust_in_silhouette:   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
         .setColor('RED')
     
-    var channel =member.guild.channels.find('name', 'chat')
+    var channel =member.guild.channels.find('name', '✵-「الشات')
     if (!channel) return;
     channel.send({embed : embed});
     })
