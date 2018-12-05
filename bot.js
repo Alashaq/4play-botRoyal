@@ -179,16 +179,6 @@ client.on('message' , async (message) => {
 
 });
 
-
-
-    
-    client.on('guildMemberRemove', member => {
-        var embed = new Discord.RichEmbed()
-        .setAuthor(member.user.username, member.user.avatarURL)
-        .setThumbnail(member.user.avatarURL)
-        .setDescription(`مع السلامه تشرفنا بك :raised_hand::cocktail: `)
-        .addField(':bust_in_silhouette:   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
-        .setColor('RED')
     
     var channel =member.guild.channels.find('name', 'chat')
     if (!channel) return;
