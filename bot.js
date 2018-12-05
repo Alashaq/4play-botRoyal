@@ -103,7 +103,6 @@ client.on('guildMemberAdd', member => {
     const logChannel = member.guild.channels.find(channel => channel.name === "chat");
     logChannel.send(`${member} Invited by: <@${inviter.id}>`);
   });
-});
 
 	client.on('message', message => {
                                 if(!message.channel.guild) return;
