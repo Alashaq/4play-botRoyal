@@ -127,9 +127,7 @@ client.on('ready', () => {
 });
          client.on('message', message => {
             if (message.content === 'hi') {
-              message.channel.send('Welcome :heart: ');
-              message.channel.sendFile("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8KNSG9XDY6qOJ8G8IRcLiIUDD-dCY7wCzKwIs8Idi5Y55qOxGgg");
-               
+              message.channel.send('Welcome :heart: ');               
 
             }
 }); 
@@ -145,7 +143,7 @@ client.on('message' , async (message) => {
         'هلا',
         'كيفك',
         '?',
-        'جرب >help'
+        'جرب -help'
     ]
     
     // Fetch a random item from the array
@@ -258,7 +256,7 @@ client.on('message', message =>{
     if(message.author.bot) return;
     if(!message.content == ('-clear'))
 if(!true) return;
-    if(message.content.split(' ')[0] == ('-clear')){
+    if(message.content.split(' ')[0] == ('#clear')){
     var lmt = message.content.split(' ')[1]
     ,  hang = 0
     ,  max  = 0;
