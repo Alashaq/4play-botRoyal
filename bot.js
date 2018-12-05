@@ -97,13 +97,23 @@ client.on('ready', () => {
 client.on('guildMemberAdd', member => {
   member.guild.fetchInvites().then(guildInvites => {
     const ei = invites[member.guild.id];
-    invites[member.guild.id] = guildInvites;
+   invites[member.guild.id] = guildInvites;
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
+    const logChannel = member.guild.channels.find(channel => channel.name === "✵-「الشات");
     const logChannel = member.guild.channels.find(channel => channel.name === "chat");
     logChannel.send(`${member} Invited by: <@${inviter.id}>`);
   });
-
+});
+client.on('message' , async (message) => {
+        var embed = new Discord.RichEmbed()
+        .setAuthor(member.user.username, member.user.avatarURL)
+        .setThumbnail(member.user.avatarURL)
+        .setDescription(`مع السلامه تشرفنا بك :raised_hand::skin-tone-1: :pensive: `)
+        .setDescription(`مع السلامه تشرفنا بك :raised_hand::cocktail: `)
+        .addField(':bust_in_silhouette:   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
+        .setColor('RED')
+    
 	client.on('message', message => {
                                 if(!message.channel.guild) return;
                         if (message.content.startsWith('-ping')) {
