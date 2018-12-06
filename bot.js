@@ -153,7 +153,31 @@ client.on('message' , async (message) => {
 }
 
 });
-
+client.on('message',async message => {
+  if(message.author.bot || message.channel.type === 'dm') return;
+  let args = message.content.split(' ');
+  if(args[0] === `${prefix}bc`) {
+    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('- **أنت لا تملك الصلاحيات اللازمة لأستخدام هذا الأمر**');
+    if(!args[1]) return message.channel.send('- **يجب عليك كتابة الرسالة بعد الأمر**');
+ 
+    let msgCount = 0;
+    let errorCount = 0;
+    let successCount = 0;
+    message.channel.send(`**- [ :bookmark: :: ${msgCount} ] ・عدد الرسائل المرسلة**\n**- [ :inbox_tray: :: ${successCount} ] ・عدد الرسائل المستلمة**\n**- [ :outbox_tray: :: ${errorCount} ]・عدد الرسائل الغير مستلمة**`).then(msg => {
+      message.guild.members.forEach(g => {
+        g.send(args.slice(1).join(' ')).then(() => {
+          successCount++;
+          msgCount++;
+          msg.edit(`**- [ :bookmark: :: ${msgCount} ] ・عدد الرسائل المرسلة**\n**- [ :inbox_tray: :: ${successCount} ] ・عدد الرسائل المستلمة**\n**- [ :outbox_tray: :: ${errorCount} ]・عدد الرسائل الغير مستلمة**`);
+        }).catch(e => {
+          errorCount++;
+          msgCount++;
+          msg.edit(`**- [ :bookmark: :: ${msgCount} ] ・عدد الرسائل المرسلة**\n**- [ :inbox_tray: :: ${successCount} ] ・عدد الرسائل المستلمة**\n**- [ :outbox_tray: :: ${errorCount} ]・عدد الرسائل الغير مستلمة**`);
+        });
+      });
+    });
+  }
+});
 client.on('message', ra3d => {
 var prefix = "-";
                         let args = ra3d.content.split(" ").slice(1).join(" ")
@@ -329,33 +353,6 @@ client.on('message', (message)=>{
                 message.channel.send(message.content.split(" ").join(" ").slice(5));
         };
 })
-
-
-client.on('message', message => {
-   let embed = new Discord.RichEmbed()
-
-    let args = message.content.split(' ').slice(1).join(' ');
-     if(!message.channel.guild) return;
-if(message.content.split(' ')[0] == '-bc') {
-         message.react("✔️")
-          let embed = new Discord.RichEmbed()
-    .setColor("#FF00FF")
-    .setThumbnail(message.author.avatarURL)   
-                                      .addField('تم الارسال بواسطة :', "<@" + message.author.id + ">")
-                 message.channel.sendEmbed(embed);
-        message.guild.members.forEach(m => {
-            var bc = new Discord.RichEmbed()
-.addField('**● Sender  :**', `*** → ${message.author.username}#${message.author.discriminator}***`)
-            .addField('***● Server  :***', `*** → ${message.guild.name}***`)               
-    .setColor('#ff0000')
-                 .addField('ّ', args)
-            m.send(``,{embed: bc});
-        });
-    }
-})
-	
-
-
         client.on('message', message => {
                         let args = message.content.split(" ").slice(1).join(" ")
 if(message.content.startsWith(prefix + 'color')) {
@@ -583,49 +580,6 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
 
 });
 
-client.on('message', message => {
-	                  if(!message.channel.guild) return;
-    if(message.content.startsWith(prefix + 'bc')) {
-    if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-  if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
-    let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
-    let copy = "KingDomOfMagic Server";
-    let request = `Requested By ${message.author.username}`;
-    if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
-    msg.react('✅')
-    .then(() => msg.react('❌'))
-    .then(() =>msg.react('✅'))
-    
-    let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-    let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
-    
-    let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
-    let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
- reaction1.on("collect", r => {
-    message.channel.send(`**☑ | Done ... The Broadcast Message Has Been Sent For __${message.guild.members.size}__ Members**`).then(m => m.delete(5000));
-    message.guild.members.forEach(m => {
-  var bc = new
-       Discord.RichEmbed()
-       .setColor('RANDOM')
-       .setTitle('Broadcast')
-       .addField('سيرفر', message.guild.name)
-       .addField('المرسل', message.author.username)
-       .addField('الرسالة', args)
-       .setThumbnail(message.author.avatarURL)
-       .setFooter(copy, client.user.avatarURL);
-    m.send({ embed: bc })
-    msg.delete();
-    })
-    })
-    reaction2.on("collect", r => {
-    message.channel.send(`**Broadcast Canceled.**`).then(m => m.delete(5000));
-    msg.delete();
-    })
-    })
-    }
-    });
-	
-	
 	client.on('message', function(msg) {
 if(msg.content.startsWith ('-server')) {
       let embed = new Discord.RichEmbed()
