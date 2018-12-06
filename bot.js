@@ -15,42 +15,28 @@ client.on("message", message => {
       .setColor("#000000") 
       .setDescription(`
       
-                   OverHype Security Commands
+                    System Bot Minore Commands
 Please Choose:
-
              
 ${prefix}ban ⇏  خاصية الباند
-
 ${prefix}bc ⇏ خاصية البرودكاست
              
 ${prefix}kick ⇏ خاصية الطرد
-
 ${prefix}clear ⇏  خاصية مسح الشات
-
 ${prefix}bans ⇏  لمعرفة عدد المبندين في سيرفر
-
 ${prefix}mute ⇏ لاعطاء شخص ميوت
-
 ${prefix}ping ⇏ لمعرفة بنق البوت
-
 ${prefix}bot ⇏ لمعرفة معلومات البوت
-
 ${prefix}info ⇏ لمعرفة معلومات البوت
  
 ${prefix}server ⇏ لمعرفة معلومات السيرفر
-
 ${prefix}roles ⇏ لعرض كل رتب السيرفر
-
 ${prefix}cc ⇏ لصنع الوان
  
 ${prefix}لو خيروك ⇏ game لو خيروك 
-
 ${prefix}قوانين ⇏ rules قوانين
-
 ${prefix}id ⇏ لمعرفة ايدي حقك
-
 ${prefix}warn ⇏ لتحضير شخص ما
-
       `)
    message.channel.sendEmbed(embed)
     
@@ -66,7 +52,7 @@ ${prefix}warn ⇏ لتحضير شخص ما
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
 .addField(' البنق🚀 ',`[${Date.now() - message.createdTimestamp}]`) 
-.addField('مصمم  + صاحب البوت ',`ŜuLTan ♕#0060 `)
+.addField('مصمم  + صاحب البوت ',`ŜuLTan ♕#2019 `)
 .setColor('#7d2dbe')
   message.channel.sendEmbed(embed);
     }
@@ -81,37 +67,8 @@ client.on('message', message => {
         message.channel.sendEmbed(embed);
     }
 });
-const invites = {};
 
-const wait = require('util').promisify(setTimeout);
 
-client.on('ready', () => {
-  wait(1000);
-
-  client.guilds.forEach(g => {
-    g.fetchInvites().then(guildInvites => {
-      invites[g.id] = guildInvites;
-    });
-});
-
-client.on('guildMemberAdd', member => {
-  member.guild.fetchInvites().then(guildInvites => {
-    const ei = invites[member.guild.id];
-   invites[member.guild.id] = guildInvites;
-    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
-    const inviter = client.users.get(invite.inviter.id);
-    const logChannel = member.guild.channels.find(channel => channel.name === "chat");
-    logChannel.send(`${member} Invited by: <@${inviter.id}>`);
-  });
-});
-client.on('message' , async (message) => {
-        var embed = new Discord.RichEmbed()
-        .setAuthor(member.user.username, member.user.avatarURL)
-        .setThumbnail(member.user.avatarURL)
-        .setDescription(`مع السلامه تشرفنا بك :raised_hand::cocktail: `)
-        .addField(':bust_in_silhouette:   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
-        .setColor('RED')
-    });
 	client.on('message', message => {
                                 if(!message.channel.guild) return;
                         if (message.content.startsWith('-ping')) {
@@ -133,7 +90,8 @@ client.on('ready', () => {
 });
          client.on('message', message => {
             if (message.content === 'hi') {
-              message.channel.send('Welcome :heart: ');               
+              message.channel.send('Welcome :heart: ');
+               
 
             }
 }); 
@@ -184,12 +142,6 @@ client.on('message' , async (message) => {
 }
 
 });
-
-    
-    var channel =member.guild.channels.find('name', 'chat')
-    if (!channel) return;
-    channel.send({embed : embed});
-    })
 
 client.on('message', ra3d => {
 var prefix = "-";
@@ -251,7 +203,7 @@ client.on('message', message =>{
     if(message.author.bot) return;
     if(!message.content == ('-clear'))
 if(!true) return;
-    if(message.content.split(' ')[0] == ('#clear')){
+    if(message.content.split(' ')[0] == ('$clear')){
     var lmt = message.content.split(' ')[1]
     ,  hang = 0
     ,  max  = 0;
@@ -367,19 +319,30 @@ client.on('message', (message)=>{
         };
 })
 
-client.on("message", message => {
 
-            if (message.content.startsWith(prefix + "obc")) {
-                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
-  let args = message.content.split(" ").slice(1);
-  var argresult = args.join(' '); 
-  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
- m.send(`${argresult}\n ${m}`);
+client.on('message', message => {
+   let embed = new Discord.RichEmbed()
+
+    let args = message.content.split(' ').slice(1).join(' ');
+     if(!message.channel.guild) return;
+if(message.content.split(' ')[0] == '-bc') {
+         message.react("✔️")
+          let embed = new Discord.RichEmbed()
+    .setColor("#FF00FF")
+    .setThumbnail(message.author.avatarURL)   
+                                      .addField('تم الارسال بواسطة :', "<@" + message.author.id + ">")
+                 message.channel.sendEmbed(embed);
+        message.guild.members.forEach(m => {
+            var bc = new Discord.RichEmbed()
+.addField('**● Sender  :**', `*** → ${message.author.username}#${message.author.discriminator}***`)
+            .addField('***● Server  :***', `*** → ${message.guild.name}***`)               
+    .setColor('#ff0000')
+                 .addField('ّ', args)
+            m.send(``,{embed: bc});
+        });
+    }
 })
- message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
- message.delete(); 
-};     
-});
+	
 
 
         client.on('message', message => {
@@ -411,7 +374,7 @@ message.channel.sendEmbed(cat);
 
    client.on("message", msg => {
            var prefix = "-";
-  if(msg.content.startsWith (prefix + "id")) {
+  if(msg.content.startsWith (prefix + "user")) {
     if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
       const embed = new Discord.RichEmbed();
   embed.addField(":cloud_tornado:  الاسم", `**[ ${msg.author.username}#${msg.author.discriminator} ]**`, true)
@@ -483,6 +446,11 @@ client.on('message', message => {
 client.on('message', message => {
     if(message.content === 'brb'){
         message.channel.send('take your time :heart:')
+    }
+});
+client.on('message', message => {
+    if(message.content === 'back'){
+        message.channel.send('Welcome :heart:')
     }
 });
 
@@ -604,8 +572,52 @@ if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return mess
 
 });
 
+client.on('message', message => {
+	                  if(!message.channel.guild) return;
+    if(message.content.startsWith(prefix + 'bc')) {
+    if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+  if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
+    let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
+    let copy = "KingDomOfMagic Server";
+    let request = `Requested By ${message.author.username}`;
+    if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
+    msg.react('✅')
+    .then(() => msg.react('❌'))
+    .then(() =>msg.react('✅'))
+    
+    let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+    let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+    
+    let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+    let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+ reaction1.on("collect", r => {
+    message.channel.send(`**☑ | Done ... The Broadcast Message Has Been Sent For __${message.guild.members.size}__ Members**`).then(m => m.delete(5000));
+    message.guild.members.forEach(m => {
+  
+  var bc = new
+       Discord.RichEmbed()
+       .setColor('RANDOM')
+       .setTitle('Broadcast')
+       .addField('سيرفر', message.guild.name)
+       .addField('المرسل', message.author.username)
+       .addField('الرسالة', args)
+       .setThumbnail(message.author.avatarURL)
+       .setFooter(copy, client.user.avatarURL);
+    m.send({ embed: bc })
+    msg.delete();
+    })
+    })
+    reaction2.on("collect", r => {
+    message.channel.send(`**Broadcast Canceled.**`).then(m => m.delete(5000));
+    msg.delete();
+    })
+    })
+    }
+    });
+	
+	
 	client.on('message', function(msg) {
-if(msg.content.startsWith ('-what')) {
+if(msg.content.startsWith ('-server')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
