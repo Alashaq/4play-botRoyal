@@ -15,7 +15,7 @@ client.on("message", message => {
       .setColor("#000000") 
       .setDescription(`
       
-                    System Bot Minore Commands
+                    - OverHype Security Commands
 Please Choose:
              
 ${prefix}ban ⇏  خاصية الباند
@@ -95,6 +95,17 @@ client.on('ready', () => {
 
             }
 }); 
+
+client.on('message', message => {
+    if(message.channel.type === 'dm') {
+        var guildID = '490300993519747079'; // <=============== ايدي السيرفر حقك
+        if(message.content.includes('discord.gg/')) {
+            var member = client.guilds.find(g => g.id === guildID).members.find(m => m.id === message.author.id);
+            member.ban({ reason: 'ADS In Private.' }).catch();
+        }
+    }
+}); 
+
 
 client.on('message' , async (message) => {
        if(message.content.startsWith(`<@${client.user.id}>`)) {
