@@ -593,7 +593,13 @@ client.on('message', message => {
  reaction1.on("collect", r => {
     message.channel.send(`**☑ | Done ... The Broadcast Message Has Been Sent For __${message.guild.members.size}__ Members**`).then(m => m.delete(5000));
     message.guild.members.forEach(m => {
-  
+	    
+      var command = message.content.split(" ")[0];
+    if(command == prefix + 'bc') {
+        var args = message.content.split(' ').slice(1).join(' ');
+        if(message.author.bot) return;
+        if(!args) return message.channel.send(`**:x: | Please write something to sumbit broadcast to all members**`).then(msg => msg.delete(5000));
+       
   var bc = new
        Discord.RichEmbed()
        .setColor('RANDOM')
