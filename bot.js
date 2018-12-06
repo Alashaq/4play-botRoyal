@@ -8,47 +8,6 @@ client.on('ready', () => {
 });
 
 
-    if (message.content === "-help") {
-    let embed = new Discord.RichEmbed()
-  .setAuthor(message.author.username)
-  .setColor("#000000")
-  .addField("Done | تــــم" , ":envelope: | :sleuth_or_spy::skin-tone-3:شيك علي في الخاص")
-  message.channel.sendEmbed(embed);
-  }
-  });
-   client.on("message", message => {
-      if (message.content === "-help") {
-       const embed = new Discord.RichEmbed() 
-           .setThumbnail(message.author.avatarURL)
-           .setColor("#FF0000")
-           .setDescription(`**   :earth_africa: الأوامر  :earth_africa: **
-**============ **
-
-**ban ⇏  **خاصية الباند
-**bc ⇏ **خاصية البرودكاست
-             
-**kick ⇏ **خاصية الطرد
-**clear ⇏  **خاصية مسح الشات
-**bans ⇏  **لمعرفة عدد المبندين في سيرفر
-**mute ⇏ **لاعطاء شخص ميوت
-**ping ⇏ **لمعرفة بنق البوت
-**bot ⇏ **لمعرفة معلومات البوت
-**info ⇏ **لمعرفة معلومات البوت
- 
-**server ⇏ **لمعرفة معلومات السيرفر
-**roles ⇏ **لعرض كل رتب السيرفر
-**cc ⇏ **لصنع الوان
- 
-لو خيروك** ⇏ game لو خيروك **
-قوانين** ⇏ rules **قوانين
-**id ⇏ **لمعرفة ايدي حقك
-**warn ⇏ **لتحضير شخص ما
-  
-**  ======:blossom:نــتــمــنــآ لــكــم آســتــمـــتــآع :blossom:======  **`)
-     message.author.sendEmbed(embed)
-     
-     }
-     });
 client.on('message', message => {
 if(message.content.startsWith(prefix + 'move all')) {
  if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send('**لايوجد لديك صلاحية سحب الأعضاء**');
