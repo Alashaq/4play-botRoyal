@@ -8,40 +8,50 @@ client.on('ready', () => {
 });
 
 
-client.on("message", message => {
-    var prefix = "-";
- if (message.content === "-help") {
-  const embed = new Discord.RichEmbed()  
-      .setColor("#000000") 
-      .setDescription(`
-      
-                    - OverHype Security Commands
-Please Choose:
+    if (message.content === "-help") {
+    let embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)
+  .setColor("#000000")
+  .addField("Done | تــــم" , ":envelope: | :sleuth_or_spy::skin-tone-3:شيك علي في الخاص")
+  message.channel.sendEmbed(embed);
+  }
+  });
+   client.on("message", message => {
+      if (message.content === "-help") {
+       const embed = new Discord.RichEmbed() 
+           .setThumbnail(message.author.avatarURL)
+           .setColor("#FF0000")
+           .setDescription(`**   :earth_africa: الأوامر  :earth_africa: **
+**============ **
+
+**ban ⇏  **خاصية الباند
+**bc ⇏ **خاصية البرودكاست
              
-${prefix}ban ⇏  خاصية الباند
-${prefix}bc ⇏ خاصية البرودكاست
-             
-${prefix}kick ⇏ خاصية الطرد
-${prefix}clear ⇏  خاصية مسح الشات
-${prefix}bans ⇏  لمعرفة عدد المبندين في سيرفر
-${prefix}mute ⇏ لاعطاء شخص ميوت
-${prefix}ping ⇏ لمعرفة بنق البوت
-${prefix}bot ⇏ لمعرفة معلومات البوت
-${prefix}info ⇏ لمعرفة معلومات البوت
+**kick ⇏ **خاصية الطرد
+**clear ⇏  **خاصية مسح الشات
+**bans ⇏  **لمعرفة عدد المبندين في سيرفر
+**mute ⇏ **لاعطاء شخص ميوت
+**ping ⇏ **لمعرفة بنق البوت
+**bot ⇏ **لمعرفة معلومات البوت
+**info ⇏ **لمعرفة معلومات البوت
  
-${prefix}server ⇏ لمعرفة معلومات السيرفر
-${prefix}roles ⇏ لعرض كل رتب السيرفر
-${prefix}cc ⇏ لصنع الوان
+**server ⇏ **لمعرفة معلومات السيرفر
+**roles ⇏ **لعرض كل رتب السيرفر
+**cc ⇏ **لصنع الوان
  
-${prefix}لو خيروك ⇏ game لو خيروك 
-${prefix}قوانين ⇏ rules قوانين
-${prefix}id ⇏ لمعرفة ايدي حقك
-${prefix}warn ⇏ لتحضير شخص ما
-      `)
-   message.channel.sendEmbed(embed)
-    
-   }
-   }); 
+لو خيروك** ⇏ game لو خيروك **
+قوانين** ⇏ rules **قوانين
+**id ⇏ **لمعرفة ايدي حقك
+**warn ⇏ **لتحضير شخص ما
+  
+**  ======:blossom:نــتــمــنــآ لــكــم آســتــمـــتــآع :blossom:======  **`)
+     message.author.sendEmbed(embed)
+     
+     }
+     });
+	 
+
+
 
 
    
